@@ -1,0 +1,147 @@
+//ex 1
+#include <iostream>
+
+class Cla {
+public:
+	Cla();
+	Cla(int, int);
+
+	int getNb1() const;
+	int getNb2() const;
+
+	void setNb1(int newNb1);
+	void setNb2(int newNb2);
+
+	int sum() const;
+private:
+	int nb1, nb2; //Definition deux entier nb1 et nb2 en private
+};
+Cla::Cla() {
+	this->nb1 = 0;
+	this->nb2 = 0;
+}
+
+Cla::Cla(int initialNb1, int initialNb2) {
+	this->nb1 = initialNb1;
+	this->nb2 = initialNb2;
+}
+
+//getters
+int Cla::getNb1() const {
+	return nb1;
+}
+
+int Cla::getNb2() const {
+	return nb2;
+}
+
+//setters
+void Cla::setNb1(int newNb1) {
+	nb1 = newNb1;
+}
+
+void Cla::setNb2(int newNb2) {
+	nb2 = newNb2;
+}
+
+int Cla::sum() const {
+	return nb1 + nb2;
+}
+int main() {
+    Cla obj;
+    obj.setNb1(5);
+    obj.setNb2(10);
+
+    Cla* obj2 = new Cla(1, 2);
+
+    obj2->setNb1(8);
+    obj2->setNb2(16);
+
+    std::cout << "La somme des attributs est : " << obj.sum() << std::endl;
+
+    std::cout << obj.sum() << std::endl;
+    std::cout << obj2->sum() << std::endl;
+
+    std::cout << "La somme des attributs est : " << obj2->sum() << std::endl;
+
+    delete obj2;
+
+    return 0;
+}
+//ex 2
+#include <iostream>
+
+class A {
+public:
+    virtual void afficher() {}
+};
+
+class B : public A {
+public:
+    void afficher() override;
+};
+
+class C : public A {
+public:
+    void afficher() override;
+};
+
+void B::afficher() {
+    std::cout << "Je suis B" << std::endl;
+}
+
+void C::afficher() {
+    std::cout << "Je suis C <<" << std::endl;
+}
+
+void afficherObjet(A* tempo) {
+    tempo->afficher();
+}
+
+int main() {
+    B* b = new B();
+    C* c = new C();
+
+    afficherObjet(b);
+    afficherObjet(c);
+
+    delete b;
+    delete c;
+    return 0;
+}
+//ex 3
+#include <iostream>
+
+class CL_main{ //creation de la classe CL_main
+    public:
+    int main();
+    void svc_T2_S1();
+    void svc_T1_S1();
+};
+
+class CL_svc_T1 : public CL_main{ //creation de la classe CL_svc_T1 heritiere de la classe CL_main
+    public:
+    void WorkA();
+    void WorkB();
+};
+
+class CL_svc_T2 : public CL_main{
+    public:
+    void WorkC();
+};
+
+class CL_cmp_A : public CL_svc_T1{
+    
+};
+
+class CL_cmp_B : public CL_svc_T1{
+    
+};
+
+class CL_cmp_C{
+    
+};
+
+int main() {
+    return 0;
+}
